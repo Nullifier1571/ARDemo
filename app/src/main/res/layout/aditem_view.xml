@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_board"
+        android:layout_width="230dp"
+        android:layout_height="150dp"
+        android:background="@drawable/christmasbox">
+
+        <ImageView
+            android:id="@+id/iv_ad_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="65dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_ad_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="54dp"
+            android:layout_toRightOf="@id/iv_ad_icon"
+            android:text="买房"
+            android:textColor="#ff00ff"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/tv_ad_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_ad_title"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/iv_ad_icon"
+            android:text="据此十万八千里"
+            android:textColor="#000000"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
