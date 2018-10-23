@@ -105,11 +105,11 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
 
     private List<AdInfo> createAdInfos() {
         ArrayList<AdInfo> adInfos = new ArrayList<>();
-        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题", "描述描述", new Vector(0, 0, -1), new Vector(Math.toRadians(0), 0, 0)));
-        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题1", "描述描述1", new Vector(1.2, 0, -1), new Vector(Math.toRadians(-30), 0, 0)));
-        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题2", "描述描述2", new Vector(-1.2, 0, -1), new Vector(Math.toRadians(30), 0, 0)));
-        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题3", "描述描述3", new Vector(0.2, -0.5, -1), new Vector(Math.toRadians(0), 0, 0)));
-        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题4", "描述描述4", new Vector(-0.2, 0.5, -1), new Vector(Math.toRadians(0), 0, 0)));
+        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题", "描述描述", new Vector(0, 0, -1.5), new Vector(Math.toRadians(0), 0, 0)));
+        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题1", "描述描述1", new Vector(1.2, 0, -1.5), new Vector(0, Math.toRadians(-30), 0)));
+        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题2", "描述描述2", new Vector(-1.2, 0, -1.5), new Vector(0, Math.toRadians(30), 0)));
+        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题3", "描述描述3", new Vector(0.2, -0.5, -1.5), new Vector(Math.toRadians(0), 0, 0)));
+        adInfos.add(new AdInfo(R.mipmap.wbu_default_avatar, "标题4", "描述描述4", new Vector(-0.2, 0.5, -1.5), new Vector(Math.toRadians(0), 0, 0)));
 
 
         return adInfos;
@@ -178,14 +178,13 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
     private Node initBlackPantherNode() {
         Node blackPantherNode = new Node();
         mBlackPantherModel = new Object3D();
-        mBlackPantherModel.setPosition(new Vector(0, -0.5, -1.5));
+        mBlackPantherModel.setPosition(new Vector(0, -0.5, -2));
         //mBlackPantherModel.setRotation(new Vector(Math.toRadians(-90), 0, 0));
         mBlackPantherModel.setScale(new Vector(0.5f, 0.5f, 0.5f));
         mBlackPantherModel.loadModel(mViroView.getViroContext(), Uri.parse("file:///android_asset/pumpkinman_anim/pumpkinman_anim.vrx"), Object3D.Type.FBX, new AsyncObject3DListener() {
             @Override
             public void onObject3DLoaded(final Object3D object, final Object3D.Type type) {
                 mObjLoaded = true;
-                startPantherExperience();
             }
 
             @Override
