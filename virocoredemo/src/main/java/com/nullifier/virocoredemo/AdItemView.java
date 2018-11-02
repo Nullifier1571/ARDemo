@@ -22,6 +22,7 @@ public class AdItemView extends RelativeLayout implements Animator.AnimatorListe
     private OnItemAnimatorEndListener mOnItemAnimatorEndListener;
     private AdInfo mAdInfo;
     private boolean mNeedCallback;
+    private boolean isCanPlayAnimation = true;
 
     public AdItemView(Context context) {
         super(context);
@@ -79,9 +80,15 @@ public class AdItemView extends RelativeLayout implements Animator.AnimatorListe
         mAnimationSet.addListener(this);
     }
 
+    public void canPlayAnimation(boolean isCanPlayAnimation) {
+        this.isCanPlayAnimation = isCanPlayAnimation;
+    }
 
     public void playAnimation(boolean needCallback) {
         if (mAnimationSet == null) {
+            return;
+        }
+        if (!isCanPlayAnimation) {
             return;
         }
         this.mNeedCallback = needCallback;

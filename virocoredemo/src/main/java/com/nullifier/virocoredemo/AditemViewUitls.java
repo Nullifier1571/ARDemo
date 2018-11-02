@@ -20,9 +20,6 @@ public class AditemViewUitls {
     private Context mContext;
     private ViroView mViroView;
 
-    public AditemViewUitls() {
-    }
-
     public AditemViewUitls(Context context, ViroView viroView) {
         this.mContext = context;
         this.mViroView = viroView;
@@ -59,6 +56,7 @@ public class AditemViewUitls {
             public void onClick(int i, Node node, Vector vector) {
                 Toast.makeText(mContext, "onClick:x" + vector.x + "y" + vector.y + "z" + vector.z, Toast.LENGTH_SHORT).show();
                 androidViews.playAnimation(true);
+                androidViews.canPlayAnimation(true);
             }
 
             @Override
