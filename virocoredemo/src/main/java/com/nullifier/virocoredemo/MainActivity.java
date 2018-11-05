@@ -43,7 +43,9 @@ import java.util.Set;
 
 public class MainActivity extends Activity implements OnItemAnimatorEndListener {
     //private static final String resourcePath="file:///android_asset/pumpkinman_anim/pumpkinman_anim.vrx";
-    private static final String resourcePath = "file:///android_asset/bangbang/bangbang.vrx";
+    private static final String resourcePath = "file:///android_asset/bangbang/bangbang_cheer.vrx";
+
+    String cheer = "BB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction";
 
     private static final String TAG = MainActivity.class.getSimpleName();
     protected ViroView mViroView;
@@ -140,17 +142,34 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
         Set<String> animationKeys = mBlackPantherModel.getAnimationKeys();
         Iterator<String> iterator = animationKeys.iterator();
         String[] animalNames = new String[animationKeys.size()];
+
+
         animationKeys.toArray(animalNames);
         while (iterator.hasNext()) {
             Log.e("BBBBBBB", "animal: " + iterator.next());
         }
+        Log.e("BBBBBBB", "==========================================");
         currentAnimationIndex = 0;
-        playAnimation(animalNames);
+        Log.e("BBBBBBB", "总共动画个数: " + animalNames.length);
+        String[] split = cheer.split("\n");
+        playAnimation(split);
+        //playAnimation(animalNames);
     }
 
-    private void playAnimation(final String[] animalNames) {
+    long currentTime = 0;
 
-        Log.e("BBBBBBB", "current play animal : " + animalNames[currentAnimationIndex]);
+    private void playAnimation(final String[] animalNames) {
+        if (animalNames.length == 0) {
+            return;
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        currentTime = 0;
         Animation animationIdle = mBlackPantherModel.getAnimation(animalNames[currentAnimationIndex]);
         animationIdle.setListener(new Animation.Listener() {
             @Override
@@ -160,7 +179,8 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
 
             @Override
             public void onAnimationFinish(Animation animation, boolean b) {
-                if (currentAnimationIndex < animalNames.length) {
+                if (currentAnimationIndex < animalNames.length - 1) {
+                    Log.e("BBBBBBB", "刚才播放的动画名字是 : " + animalNames[currentAnimationIndex] + "动画持续时间是=>" + (System.currentTimeMillis() - currentTime));
                     currentAnimationIndex++;
                     playAnimation(animalNames);
                 } else {
@@ -168,6 +188,7 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
                 }
             }
         });
+        currentTime = System.currentTimeMillis();
         animationIdle.play();
     }
 
@@ -179,8 +200,8 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
         Node blackPantherNode = new Node();
         mBlackPantherModel = new Object3D();
         mBlackPantherModel.setPosition(new Vector(0, -1, -4));
-        //mBlackPantherModel.setRotation(new Vector(Math.toRadians(-90), 0, 0));
-        mBlackPantherModel.setScale(new Vector(0.6f, 0.6f, 0.6f));
+        mBlackPantherModel.setRotation(new Vector(Math.toRadians(-90), 0, 0));
+        mBlackPantherModel.setScale(new Vector(0.5f, 0.5f, 0.5f));
         //mBlackPantherModel.setScale(new Vector(10f, 10f, 10f));
         mBlackPantherModel.loadModel(mViroView.getViroContext(), Uri.parse(resourcePath), Object3D.Type.FBX, new AsyncObject3DListener() {
             @Override
