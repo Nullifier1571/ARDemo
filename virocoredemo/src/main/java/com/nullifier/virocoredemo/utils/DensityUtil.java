@@ -1,4 +1,4 @@
-package com.nullifier.virocoredemo;
+package com.nullifier.virocoredemo.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

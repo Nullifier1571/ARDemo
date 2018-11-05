@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 
+import com.nullifier.virocoredemo.bean.ObjectInfo;
+import com.nullifier.virocoredemo.listener.OnObjectLoadedListener;
 import com.viro.core.ARScene;
 import com.viro.core.AsyncObject3DListener;
 import com.viro.core.Material;
@@ -23,29 +25,32 @@ public class ObjectNodeUtils {
 
 
     private static final String TAG = "ObjectNodeUtils";
-    private final ViroContext viroContext;
+   /* private final ViroContext viroContext;
     private final ARScene mScene;
 
     public ObjectNodeUtils(ViroContext viroContext, ARScene mScene) {
         this.viroContext = viroContext;
         this.mScene = mScene;
-    }
+    }*/
 
     // +---------------------------------------------------------------------------+
     //  3D Scene Construction
     // +---------------------------------------------------------------------------+
 
-    public Node initBlackPantherNode(String resourcePath) {
-        Node blackPantherNode = new Node();
+    public static Object3D initObject(ViroContext viroContext,ObjectInfo objectInfo, final OnObjectLoadedListener onObjectLoadedListener) {
+
         Object3D mBlackPantherModel = new Object3D();
-        mBlackPantherModel.setPosition(new Vector(0, -1, -4));
-        //mBlackPantherModel.setRotation(new Vector(Math.toRadians(-90), 0, 0));
-        mBlackPantherModel.setScale(new Vector(0.6f, 0.6f, 0.6f));
-        //mBlackPantherModel.setScale(new Vector(10f, 10f, 10f));
-        mBlackPantherModel.loadModel(viroContext, Uri.parse(resourcePath), Object3D.Type.FBX, new AsyncObject3DListener() {
+        if (objectInfo == null) {
+            return mBlackPantherModel;
+        }
+        mBlackPantherModel.setPosition(objectInfo.position);
+        mBlackPantherModel.setRotation(objectInfo.rotation);
+        mBlackPantherModel.setScale(objectInfo.rotation);
+        mBlackPantherModel.loadModel(viroContext, Uri.parse(objectInfo.resourcePath), Object3D.Type.FBX, new AsyncObject3DListener() {
             @Override
             public void onObject3DLoaded(final Object3D object, final Object3D.Type type) {
                 //mObjLoaded = true;
+                onObjectLoadedListener.onObject3DLoadedSuccessful();
             }
 
             @Override
@@ -53,14 +58,10 @@ public class ObjectNodeUtils {
                 Log.e(TAG, "Black Panther Object Failed to load.");
             }
         });
-
-        blackPantherNode.addChildNode(mBlackPantherModel);
-        blackPantherNode.addChildNode(initLightingNode());
-        mScene.getRootNode().addChildNode(blackPantherNode);
-        return blackPantherNode;
+        return mBlackPantherModel;
     }
 
-    public Node initLightingNode() {
+    public static Node initLightingNode(ARScene mScene) {
         Vector omniLightPositions[] = {new Vector(-3, 3, 0.3),
                 new Vector(3, 3, 1),
                 new Vector(-3, -3, 1),

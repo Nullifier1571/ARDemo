@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.nullifier.virocoredemo.bean.AdInfo;
 import com.nullifier.virocoredemo.listener.OnItemAnimatorEndListener;
 
 public class AdItemView extends RelativeLayout implements Animator.AnimatorListener {

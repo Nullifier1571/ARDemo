@@ -1,8 +1,11 @@
-package com.nullifier.virocoredemo;
+package com.nullifier.virocoredemo.utils;
 
 import android.content.Context;
 import android.widget.Toast;
 
+import com.nullifier.virocoredemo.AdItemView;
+import com.nullifier.virocoredemo.bean.AdModuleInfo;
+import com.nullifier.virocoredemo.bean.AdInfo;
 import com.nullifier.virocoredemo.listener.OnItemAnimatorEndListener;
 import com.viro.core.AndroidViewTexture;
 import com.viro.core.ClickListener;

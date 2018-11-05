@@ -1,5 +1,6 @@
-package com.nullifier.virocoredemo;
+package com.nullifier.virocoredemo.bean;
 
+import com.nullifier.virocoredemo.AdItemView;
 import com.viro.core.Node;
 
 public class AdModuleInfo {

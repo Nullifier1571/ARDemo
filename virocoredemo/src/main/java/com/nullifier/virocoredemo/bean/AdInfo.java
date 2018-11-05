@@ -1,4 +1,4 @@
-package com.nullifier.virocoredemo;
+package com.nullifier.virocoredemo.bean;
 
 import com.viro.core.Vector;
 
