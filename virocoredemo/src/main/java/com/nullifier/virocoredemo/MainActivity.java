@@ -169,11 +169,6 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
             return;
         }
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         currentTime = 0;
         Animation animationIdle = mBlackPantherModel.getAnimation(animalNames[currentAnimationIndex]);
@@ -205,7 +200,8 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
     private Node initBlackPantherNode() {
         Node blackPantherNode = new Node();
 
-        ObjectInfo objectInfo = new ObjectInfo(new Vector(0, -1, -4), new Vector(Math.toRadians(-90), 0, 0), new Vector(0.5f, 0.5f, 0.5f), resourcePath);
+        //ObjectInfo objectInfo = new ObjectInfo(new Vector(0, -1, -4), new Vector(Math.toRadians(-90), 0, 0), new Vector(0.5f, 0.5f, 0.5f), resourcePath);
+        ObjectInfo objectInfo = new ObjectInfo(new Vector(0, -1, -4), new Vector(Math.toRadians(0), 0, 0), new Vector(0.5f, 0.5f, 0.5f), resourcePath);
 
         mBlackPantherModel = ObjectNodeUtils.initObject(mViroView.getViroContext(), objectInfo, new OnObjectLoadedListener() {
             @Override
