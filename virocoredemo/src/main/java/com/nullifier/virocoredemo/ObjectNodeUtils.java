@@ -46,7 +46,7 @@ public class ObjectNodeUtils {
         }
         mBlackPantherModel.setPosition(objectInfo.position);
         mBlackPantherModel.setRotation(objectInfo.rotation);
-        mBlackPantherModel.setScale(objectInfo.rotation);
+        mBlackPantherModel.setScale(objectInfo.scale);
         mBlackPantherModel.loadModel(viroContext, Uri.parse(objectInfo.resourcePath), Object3D.Type.FBX, new AsyncObject3DListener() {
             @Override
             public void onObject3DLoaded(final Object3D object, final Object3D.Type type) {

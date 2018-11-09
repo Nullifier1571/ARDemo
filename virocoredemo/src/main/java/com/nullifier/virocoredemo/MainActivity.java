@@ -219,24 +219,6 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
                 Log.e(TAG, "Black Panther Object Failed to load.");
             }
         });
-
-
-       /* mBlackPantherModel = new Object3D();
-        mBlackPantherModel.setPosition(new Vector(0, -1, -4));
-        mBlackPantherModel.setRotation(new Vector(Math.toRadians(-90), 0, 0));
-        mBlackPantherModel.setScale(new Vector(0.5f, 0.5f, 0.5f));
-        mBlackPantherModel.loadModel(mViroView.getViroContext(), Uri.parse(resourcePath), Object3D.Type.FBX, new AsyncObject3DListener() {
-            @Override
-            public void onObject3DLoaded(final Object3D object, final Object3D.Type type) {
-                mObjLoaded = true;
-            }
-
-            @Override
-            public void onObject3DFailed(final String error) {
-                Log.e(TAG, "Black Panther Object Failed to load.");
-            }
-        });*/
-
         blackPantherNode.addChildNode(mBlackPantherModel);
 
         return blackPantherNode;
