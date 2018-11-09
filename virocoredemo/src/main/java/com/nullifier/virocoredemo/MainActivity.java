@@ -42,9 +42,17 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
     //private static final String resourcePath="file:///android_asset/pumpkinman_anim/pumpkinman_anim.vrx";
     private static final String resourcePath = "file:///android_asset/bangbang/bangbang_cheer.vrx";
 
-    String cheer = "BB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction";
+    String cheer = "BB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction"
+            +"\nBB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction"
+            +"\nBB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction"
+            +"\nBB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction"
+            +"\nBB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction"
+            +"\nBB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction"
+            +"\nBB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction"
+            +"\nBB_HH_45_Fianl_opencollada_Main|BB_HH_45_Fianl_opencollada_FKShoulder_RAction"
+            ;
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = "BBBBBBBBBB";
     protected ViroView mViroView;
     private ARScene mScene;
     private ARImageTarget mImageTarget;
@@ -86,11 +94,10 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
     }
 
 
-
     private void onRenderCreate() {
         // Create the base ARScene
         mScene = new ARScene();
-       // mObjectNodeUtils = new ObjectNodeUtils(mViroView.getViroContext(), mScene);
+        // mObjectNodeUtils = new ObjectNodeUtils(mViroView.getViroContext(), mScene);
         // Create an ARImageTarget out of the Black Panther poster
         Bitmap blackPantherPoster = getBitmapFromAssets("logo.jpg");
         mImageTarget = new ARImageTarget(blackPantherPoster, ARImageTarget.Orientation.Up, 0.188f);
@@ -198,20 +205,26 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
     private Node initBlackPantherNode() {
         Node blackPantherNode = new Node();
 
-    /*    ObjectInfo objectInfo = new ObjectInfo(new Vector(0, -1, -4), new Vector(Math.toRadians(-90), 0, 0), new Vector(0.5f, 0.5f, 0.5f), resourcePath);
-        mBlackPantherModel = ObjectNodeUtils.initObject(mViroView.getViroContext(),objectInfo, new OnObjectLoadedListener() {
+        ObjectInfo objectInfo = new ObjectInfo(new Vector(0, -1, -4), new Vector(Math.toRadians(-90), 0, 0), new Vector(0.5f, 0.5f, 0.5f), resourcePath);
+
+        mBlackPantherModel = ObjectNodeUtils.initObject(mViroView.getViroContext(), objectInfo, new OnObjectLoadedListener() {
             @Override
             public void onObject3DLoadedSuccessful() {
+                Log.e(TAG, "Black Panther Objecton Object3DLoadedSuccessful to load.");
                 mObjLoaded = true;
             }
-        });*/
+
+            @Override
+            public void onObject3DLoadedError(String error) {
+                Log.e(TAG, "Black Panther Object Failed to load.");
+            }
+        });
 
 
-       mBlackPantherModel = new Object3D();
+       /* mBlackPantherModel = new Object3D();
         mBlackPantherModel.setPosition(new Vector(0, -1, -4));
         mBlackPantherModel.setRotation(new Vector(Math.toRadians(-90), 0, 0));
         mBlackPantherModel.setScale(new Vector(0.5f, 0.5f, 0.5f));
-        //mBlackPantherModel.setScale(new Vector(10f, 10f, 10f));
         mBlackPantherModel.loadModel(mViroView.getViroContext(), Uri.parse(resourcePath), Object3D.Type.FBX, new AsyncObject3DListener() {
             @Override
             public void onObject3DLoaded(final Object3D object, final Object3D.Type type) {
@@ -222,13 +235,13 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
             public void onObject3DFailed(final String error) {
                 Log.e(TAG, "Black Panther Object Failed to load.");
             }
-        });
+        });*/
 
         blackPantherNode.addChildNode(mBlackPantherModel);
 
         return blackPantherNode;
     }
-    
+
     @Override
     protected void onStart() {
         super.onStart();

@@ -14,4 +14,14 @@ public class ObjectInfo {
         this.scale = scale;
         this.resourcePath = resourcePath;
     }
+
+    @Override
+    public String toString() {
+        return "ObjectInfo{" +
+                "position=" + position +
+                ", rotation=" + rotation +
+                ", scale=" + scale +
+                ", resourcePath='" + resourcePath + '\'' +
+                '}';
+    }
 }

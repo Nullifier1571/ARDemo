@@ -40,6 +40,7 @@ public class ObjectNodeUtils {
     public static Object3D initObject(ViroContext viroContext,ObjectInfo objectInfo, final OnObjectLoadedListener onObjectLoadedListener) {
 
         Object3D mBlackPantherModel = new Object3D();
+        Log.e("BBBBBBBBBB",objectInfo.toString());
         if (objectInfo == null) {
             return mBlackPantherModel;
         }
@@ -49,13 +50,12 @@ public class ObjectNodeUtils {
         mBlackPantherModel.loadModel(viroContext, Uri.parse(objectInfo.resourcePath), Object3D.Type.FBX, new AsyncObject3DListener() {
             @Override
             public void onObject3DLoaded(final Object3D object, final Object3D.Type type) {
-                //mObjLoaded = true;
                 onObjectLoadedListener.onObject3DLoadedSuccessful();
             }
 
             @Override
             public void onObject3DFailed(final String error) {
-                Log.e(TAG, "Black Panther Object Failed to load.");
+                onObjectLoadedListener.onObject3DLoadedError(error);
             }
         });
         return mBlackPantherModel;
