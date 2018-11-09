@@ -157,9 +157,9 @@ public class MainActivity extends Activity implements OnItemAnimatorEndListener 
         Log.e("BBBBBBB", "==========================================");
         currentAnimationIndex = 0;
         Log.e("BBBBBBB", "总共动画个数: " + animalNames.length);
-        String[] split = cheer.split("\n");
-        playAnimation(split);
-        //playAnimation(animalNames);
+        /*String[] split = cheer.split("\n");
+        playAnimation(split);*/
+        playAnimation(animalNames);
     }
 
     long currentTime = 0;
